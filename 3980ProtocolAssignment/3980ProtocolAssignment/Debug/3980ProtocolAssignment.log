@@ -1,0 +1,6 @@
+﻿  Protocol.cpp
+c:\users\aingaran\onedrive\3980\final\3980protocolassignment v6\3980protocolassignment\protocol.cpp(355): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\aingaran\onedrive\3980\final\3980protocolassignment v6\3980protocolassignment\protocol.cpp(394): warning C4800: 'OPENFILENAME *': forcing value to bool 'true' or 'false' (performance warning)
+c:\users\aingaran\onedrive\3980\final\3980protocolassignment v6\3980protocolassignment\protocol.cpp(477): warning C4101: 'id': unreferenced local variable
+  3980ProtocolAssignment.vcxproj -> C:\Users\Aingaran\OneDrive\3980\Final\3980ProtocolAssignment v6\Debug\3980ProtocolAssignment.exe
+  3980ProtocolAssignment.vcxproj -> C:\Users\Aingaran\OneDrive\3980\Final\3980ProtocolAssignment v6\Debug\3980ProtocolAssignment.pdb (Partial PDB)

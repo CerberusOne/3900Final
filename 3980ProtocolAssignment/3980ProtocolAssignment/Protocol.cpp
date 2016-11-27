@@ -59,6 +59,7 @@ TIMERPROC generateRandTimer();
 static TCHAR Name[] = TEXT("The Stall-in Protocol - Presented by the Bolsheviks");			//Name of main window
 HANDLE readThread;									//Thread that reads data											
 HWND hwnd;											//Handle to main window
+HWND hstat;
 int cmdShow = 0;									//flags for displaying main window
 HINSTANCE mainInst;									//Instance of main window
 
@@ -126,17 +127,27 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hprevInstance,
 	if (!RegisterClassEx(&Wcl))
 		return 0;
 
-	hwnd = CreateWindow(Name, Name, WS_OVERLAPPEDWINDOW, 10, 10,
-		1000, 400, NULL, NULL, hInst, NULL);
+	hwnd = CreateWindow(Name, Name, WS_OVERLAPPEDWINDOW, -10, 0,
+		750, 400, NULL, NULL, hInst, NULL);
+	
+	hstat = CreateWindow(Name, Name, WS_OVERLAPPEDWINDOW, -10, 395,
+		750, 200, NULL, NULL, hInst, NULL);
 
 	if (hwnd == NULL) {
 		MessageBox(NULL, "Main window failed to open, program shutting down", "ERROR", MB_OK);
 		return 0;
 	}
 
+	if (hstat== NULL) {
+		MessageBox(NULL, "Main window failed to open, program shutting down", "ERROR", MB_OK);
+		return 0;
+	}
 
 	ShowWindow(hwnd, nCmdShow);
 	UpdateWindow(hwnd);
+
+	ShowWindow(hstat, nCmdShow);
+	UpdateWindow(hstat);
 
 
 
@@ -175,9 +186,6 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hprevInstance,
 -----------------------------------------------------------------------------------*/
 LRESULT CALLBACK WndProc(HWND hwnd, UINT Message, WPARAM wParam, LPARAM lParam)
 {
-
-	
-
 	char str[100];
 
 	switch (Message)
@@ -187,6 +195,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT Message, WPARAM wParam, LPARAM lParam)
 		case IDT_IDLE:
 			OutputDebugString("timer finised\n");
 			//KillTimer(hwnd, IDT_IDLE);
+			generateRandTimer();
 		}
 	case WM_COMMAND:
 		switch (LOWORD(wParam))  //Parsing the menu selections
@@ -458,15 +467,15 @@ void loadFileToBuffer(HANDLE hf) {
 }
 
 void generateIDLETimer() {
-	//SetTimer(hwnd, IDT_IDLE, 500, (TIMERPROC)NULL);
-	SetTimer(hwnd, IDT_IDLE, 500, generateRandTimer());
+	SetTimer(hwnd, IDT_IDLE, 500, (TIMERPROC)NULL);
+	//SetTimer(hwnd, IDT_IDLE, 500, generateRandTimer());
 }
 
 TIMERPROC generateRandTimer() {
-	if (!hasSendData) {
+	//if (!hasSendData) {
 		SetTimer(hwnd, IDT_RAND, genRand(), requestingSend(port, hwnd));
 		OutputDebugString("Starting rand timer\n");
-	}	
+	//}	
 
 	return NULL;
 }

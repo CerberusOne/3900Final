@@ -112,6 +112,7 @@
   <ItemGroup>
     <ClInclude Include="Constants.h" />
     <ClInclude Include="MenuSettings.h" />
+    <ClInclude Include="Receive.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Transmit.h" />
   </ItemGroup>
@@ -120,6 +121,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Protocol.cpp" />
+    <ClCompile Include="Receive.cpp" />
     <ClCompile Include="Transmit.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
